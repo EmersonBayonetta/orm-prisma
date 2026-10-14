@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Param, Patch, Post, ParseIntPipe, Delete } from '@nestjs/common';
-import { CriarTarefaDto } from './dto/criar-tarefa.dto.js';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { AtualizarTarefaDto } from './DTO/atualizar.dto.js';
+import { CriarTarefaDto } from './DTO/criar-tarefa.dto.js';
 import { TarefasService } from './tarefas.service.js';
-import path from 'path';
 
 @Controller('tarefas')
 export class TarefasController {
@@ -21,7 +21,7 @@ export class TarefasController {
     }
 
     @Patch(':id')
-    atualizar(@Param('id', ParseIntPipe) id: number, @Body() dto: CriarTarefaDto) {
+    atualizar(@Param('id', ParseIntPipe) id: number, @Body() dto: AtualizarTarefaDto) {
         return this.tarefasService.atualizar(id, dto);
     }
     @Delete(':id')

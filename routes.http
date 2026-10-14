@@ -18,7 +18,7 @@ PATCH http://localhost:3000/tarefas/1
 Content-Type: application/json
 
 {
-    "concluida": true
+    "concluido": true
 }
 
 ###

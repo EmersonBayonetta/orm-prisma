@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { TarefasController } from './tarefas.controller';
-import { TarefasService } from './tarefas.service';
+import { TarefasController } from './tarefas.controller.js';
+import { TarefasService } from './tarefas.service.js';
 
 @Module({
-  imports: []
+  imports: [],
   controllers: [TarefasController],
-  providers: [TarefasService]
+  providers: [TarefasService],
 })
 export class TarefasModule {}

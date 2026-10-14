@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from '../../prisma/prisma.service';
-import { CriarTarefaDto } from './DTO/criar-tarefa.dto';
+import { PrismaService } from '../prisma/prisma.service.js';
+import { AtualizarTarefaDto } from './DTO/atualizar.dto.js';
+import { CriarTarefaDto } from './DTO/criar-tarefa.dto.js';
 
 @Injectable()
 export class TarefasService {
@@ -30,5 +31,18 @@ export class TarefasService {
         }
 
         return tarefa;
+    }
+
+    async atualizar(id: number, dto: AtualizarTarefaDto) {
+        await this.buscar(id);
+        return this.prisma.tarefa.update({
+            where: { id },
+            data: dto,
+        });
+    }
+
+    async remover(id: number) {
+        await this.buscar(id);
+        return this.prisma.tarefa.delete({ where: { id } });
     }
 }
